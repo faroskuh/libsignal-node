@@ -1,11 +1,11 @@
-const loggerPino = require('pino');
+// const loggerPino = require('pino');
 
-const _logger = loggerPino();
+// const _logger = loggerPino();
 
-function getLogger(){
-    return _logger;
-}
+// function getLogger(){
+//     return _logger;
+// }
 
 
-module.exports = { getLogger }
+// module.exports = { getLogger }
 

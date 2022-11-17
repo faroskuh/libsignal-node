@@ -10,8 +10,8 @@ const errors = require('./errors');
 const protobufs = require('./protobufs');
 const queueJob = require('./queue_job');
 
-const logger = require('./logger');
-const loggerChild = logger.getLogger().child({ module: 'session_cipher' });
+// const logger = require('./logger');
+// const loggerChild = logger.getLogger().child({ module: 'session_cipher' });
 
 const VERSION = 3;
 
@@ -157,9 +157,9 @@ class SessionCipher {
                 errs.push(e);
             }
         }
-        loggerChild.error("Failed to decrypt message with any known session...");
+        // loggerChild.error("Failed to decrypt message with any known session...");
         for (const e of errs) {
-            loggerChild.error({ stack: e.stack }, "Session error:" + e);
+            // loggerChild.error({ stack: e.stack }, "Session error:" + e);
         }
         throw new errors.SessionError("No matching sessions found for message");
     }
@@ -182,7 +182,7 @@ class SessionCipher {
                 // was the most current.  Simply make a note of it and continue.  If our
                 // actual open session is for reason invalid, that must be handled via
                 // a full SessionError response.
-                loggerChild.warn("Decrypted message with closed session.");
+                // loggerChild.warn("Decrypted message with closed session.");
             }
             await this.storeRecord(record);
             return result.plaintext;
